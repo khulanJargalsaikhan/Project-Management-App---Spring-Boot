@@ -4,11 +4,8 @@
 First commit
 -----------
 
-<<<<<<< HEAD
 Utilized:
-=======
-Utilized:
->>>>>>> 8a43695085c192a7bb00bcb001977947ca30a8f6
+
 - Thymeleaf, Spring Data JPA, and Entity Relationships
 - Seeding DB using CommandLineRunner and SQL Files
 - Included JS and CSS files
