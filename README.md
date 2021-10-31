@@ -6,8 +6,9 @@ First commit
 
 Utilized:
 
-- Thymeleaf, Spring Data JPA, and Entity Relationships
+- Thymeleaf, Spring Data JPA, and Entity Relationships(used @OneToMany @ManyToOne @ManyToMany annotations)
 - Seeding DB using CommandLineRunner and SQL Files
+- Included custom queries in spring data repositories  
 - Included JS and CSS files
 
 Second commit
