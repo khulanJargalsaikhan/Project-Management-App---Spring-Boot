@@ -16,3 +16,10 @@ Second commit
 
 - Used Environment Variables in Property Configuration file to hide the sensitive information
 - Configured properties for PostgreSQL DB and connected the DB to the app
+
+Third commit
+-------------
+
+- Setting up configuration for integration testing (@SpringBootTest)
+- Integration tests for Controllers/Views
+
