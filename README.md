@@ -21,5 +21,21 @@ Third commit
 -------------
 
 - Setting up configuration for integration testing (@SpringBootTest)
+- Utilized junit dependency  
 - Integration tests for Controllers/Views
 
+**Not committed works** 
+- Built a Docker image using Dockerfile and run it in a container.
+- Utilized Amazon RDS (relational database service) and have DB running on the cloud.
+- Built the connection between the container and the DB remotely. (Used Env Variables)
+
+Fourth commit
+-----------
+- Created EmployeeService and ProjectService classes in order to decouple Repositories from Controllers
+- Worked with Spring Profiles by creating application-dev.properties and application-prod.properties
+  (was able to control the app in different state based on profile that is set)
+- Utilized AOP(@Aspect, @Pointcut, @Before, @After with JoinPoint, @Around with ProceedJoinPoint)
+- Tested Best Practices for Logging (WARN, DEBUG, INFO)
+- Spring Security: Configured JDBC Authorization/Authentication with Postgres Database
+- Created User Registration and Password Encryption
+- Customized White Label Error pages

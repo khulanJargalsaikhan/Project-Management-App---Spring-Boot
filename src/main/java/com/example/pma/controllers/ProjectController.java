@@ -4,6 +4,8 @@ import com.example.pma.dao.EmployeeRepository;
 import com.example.pma.entities.Employee;
 import com.example.pma.entities.Project;
 import com.example.pma.dao.ProjectRepository;
+import com.example.pma.services.EmployeeService;
+import com.example.pma.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,15 +20,16 @@ import java.util.List;
 @RequestMapping("/projects")
 public class ProjectController {
 
+    // this is for decoupling Repositories from Controllers
     @Autowired
-    ProjectRepository proRepo;
+    ProjectService proService;
 
     @Autowired
-    EmployeeRepository empRepo;
+    EmployeeService empService;
 
     @GetMapping
     public String displayProjects(Model model){
-        List<Project> projects = proRepo.findAll();
+        List<Project> projects = proService.getAll();
         model.addAttribute("projects", projects);
         return "projects/list-projects";
     }
@@ -34,7 +37,7 @@ public class ProjectController {
     @GetMapping("/new")
     public String displayProjectForm(Model model){
         Project aProject = new Project();
-        List<Employee> employees = empRepo.findAll();
+        List<Employee> employees = empService.getAll();
         model.addAttribute("project", aProject);
         model.addAttribute("allEmployees", employees);
         return "projects/new-project";
@@ -43,7 +46,7 @@ public class ProjectController {
     @PostMapping("/save")
     public String createProject(Project project, Model model){
         // this should handle saving to the database..
-        proRepo.save(project);
+        proService.save(project);
 
         // use a redirect to prevent duplicate submissions
         return "redirect:/projects";

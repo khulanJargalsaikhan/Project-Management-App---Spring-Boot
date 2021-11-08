@@ -23,8 +23,8 @@ public class HomeController {
     @Value("${version}")
     private String version;
 
-//    @Value("${spring.datasource.password}")
-//    private String dbPassword;
+    @Value("${spring.datasource.password}")
+    private String dbPassword;
 
 
     @Autowired
@@ -37,7 +37,7 @@ public class HomeController {
 
         model.addAttribute("versionNumber", version);
 
-//        model.addAttribute("dbPassword", dbPassword);
+        model.addAttribute("dbPassword", dbPassword);
 
         Map<String, Object> map = new HashMap<>();
 

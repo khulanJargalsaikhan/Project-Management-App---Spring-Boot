@@ -2,6 +2,7 @@ package com.example.pma.controllers;
 
 import com.example.pma.entities.Employee;
 import com.example.pma.dao.EmployeeRepository;
+import com.example.pma.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,13 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeeController {
 
+    // this is for decoupling Repositories from Controllers
     @Autowired
-    EmployeeRepository empRepo;
+    EmployeeService empService;
 
     @GetMapping
     public String displayEmployee(Model model){
-        List<Employee> employees = empRepo.findAll();
+        List<Employee> employees = empService.getAll();
         model.addAttribute("employees", employees);
         return "employees/list-employees";
     }
@@ -35,10 +37,10 @@ public class EmployeeController {
     @PostMapping("/save")
     public String createEmployee(Employee employee, Model model){
         // this should handle saving to the database..
-        empRepo.save(employee);
+        empService.save(employee);
 
         // use a redirect to prevent duplicate submissions
-        return "redirect:/employees/new";
+        return "redirect:/employees";
     }
 
 
