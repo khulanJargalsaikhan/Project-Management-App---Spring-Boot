@@ -1,6 +1,12 @@
 package com.example.pma.entities;
 
+import com.example.pma.validators.UniqueValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.validation.constraints.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -9,9 +15,23 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "employee_seq")
     //@SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1)
     private long employeeId;
+
+    @NotNull
+    @Size(min=2, max=50)
     private String firstName;
+
+    @NotNull
+    @Size(min=1, max=50)
     private String lastName;
+
+    @NotNull
+    @Email  //controller(client side) level validation
+    @UniqueValue  //this is custom validation that we created
     private String email;
+
+    //@Column(unique = true) //this is database level validation, and this will not work bc ddl=none in app.properties file
+
+
 
     //this is child side, Project is parent   --> these are all rules about relationships between parent and child
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
@@ -20,6 +40,7 @@ public class Employee {
             joinColumns = @JoinColumn(name="employee_id"),
             inverseJoinColumns = @JoinColumn(name="project_id"))
 
+    @JsonIgnore  // this ignores this particular field for serialization
     private List<Project> projects;
 
     public Employee() {

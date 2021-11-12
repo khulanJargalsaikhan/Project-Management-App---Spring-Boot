@@ -39,3 +39,12 @@ Fourth commit
 - Spring Security: Configured JDBC Authorization/Authentication with Postgres Database
 - Created User Registration and Password Encryption
 - Customized White Label Error pages
+
+
+5th commit
+-----------
+- Built CRUD REST endpoints for entities and HTTP verbs
+- Set validation rules for a REST API
+- Built custom clientside validation involving data repositories
+- Added pagination in REST API
+- Added Spring Data Rest

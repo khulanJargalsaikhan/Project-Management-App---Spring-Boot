@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER Khulan "onagraa@email.com"
+MAINTAINER Khulan "onagraa@gmail.com"
 
 ENV version=aws-db-usage
 ENV dbuser=postgres
