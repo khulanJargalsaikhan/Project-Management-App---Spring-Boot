@@ -9,22 +9,61 @@
 <nav th:replace="layouts :: navbar"></nav>
 
 <div class="container">
-    <form th:action="@{/projects/save}" th:object="${project}" method="POST">
-        <input type="text" placeholder="Project Name" th:field="${project.name}">
-        <select th:field="${project.stage}">
-            <option th:value="NOTSTARTED"> Not Started</option>
-            <option th:value="INPROGRESS"> In Progress</option>
-            <option th:value="COMPLETED"> Completed</option>
-        </select>
-        <textarea type="text" placeholder="Enter Project Description" th:field="${project.description}"></textarea>
-        <select th:field="*{employees}" multiple="multiple">
-            <option th:each="employee : ${allEmployees}"
-                    th:value="${employee.employeeId}"
-                    th:text="${employee.firstName}">
-            </option>
-        </select>
-        <button type="submit">Create Project</button>
+    <br>
+    <h3>Project Form</h3>
+    <br>
+    <form  th:action="@{/projects/save}" th:object="${project}" method="POST">
+        <input type="hidden" th:field="${project.projectId}"/>
+
+        <div class="form-group row">
+            <label for="inputProjectName3" class="col-sm-2 col-form-label">Project Name</label>
+            <div class="col-sm-10">
+                <input type="text" th:field="${project.name}" class="form-control" id="inputProjectName3" placeholder="Project Name">
+                <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="${project.name}"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputProjectStage3" class="col-sm-2 col-form-label">Project Stage</label>
+            <div class="col-sm-10">
+                <select th:field="${project.stage}" class="form-control" id="inputProjectStage3">
+                    <span th:if="${#fields.hasErrors('stage')}" th:errors="${project.stage}"></span>
+                    <option th:value="NOTSTARTED">Not Started</option>
+                    <option th:value="INPROGRESS">In Progress</option>
+                    <option th:value="COMPLETED">Completed</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputProjectDescription3" class="col-sm-2 col-form-label">Project Description</label>
+            <div class="col-sm-10">
+                <textarea type="text" th:field="${project.description}" class="form-control" id="inputProjectDescription3" placeholder="Enter Project Description"></textarea>
+                <span style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="${project.description}"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmployee3" class="col-sm-2 col-form-label">Employee</label>
+            <div class="col-sm-10">
+                <select th:field="*{employees}" multiple="multiple" class="form-control" id="inputEmployee3">
+                    <option th:each="employee : ${allEmployees}"
+                            th:value="${employee.employeeId}"
+                            th:text="${employee.firstName}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-info">Enter Project</button>
+            </div>
+        </div>
     </form>
+
+
+
+
+
 </div>
 
 </body>

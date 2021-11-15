@@ -48,3 +48,8 @@ Fourth commit
 - Built custom clientside validation involving data repositories
 - Added pagination in REST API
 - Added Spring Data Rest
+
+6th commit
+-----------
+- Created Update and Delete entities
+- Improved Forms' design and UI Validation(@Valid in controller, @NotBlank)

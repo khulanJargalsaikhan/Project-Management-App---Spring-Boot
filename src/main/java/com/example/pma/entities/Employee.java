@@ -2,6 +2,8 @@ package com.example.pma.entities;
 
 import com.example.pma.validators.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
@@ -16,16 +18,16 @@ public class Employee {
     //@SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1)
     private long employeeId;
 
-    @NotNull
+    @NotBlank
     @Size(min=2, max=50)
     private String firstName;
 
-    @NotNull
+    @NotBlank
     @Size(min=1, max=50)
     private String lastName;
 
-    @NotNull
-    @Email  //controller(client side) level validation
+    @NotBlank
+    @Email(message = "*Must give a valid email address")  //controller(client side) level validation
     @UniqueValue  //this is custom validation that we created
     private String email;
 

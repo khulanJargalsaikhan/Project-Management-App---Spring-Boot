@@ -3,6 +3,10 @@ package com.example.pma.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +17,23 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "project_seq")
     //@SequenceGenerator(name = "project_seq", sequenceName = "project-seq", allocationSize = 1)
     private long projectId;
+
+    @NotBlank(message = "Must give a first name")
+    @Size(min=1, max=50)
     private String name;
+
     private String stage; // NOT-STARTED, COMPLETED, IN-PROGRESS
+
+    @NotBlank(message = "Must give a description")
+    @Size(min=1, max=250)
     private String description;
+
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY)
     @JoinTable(name="project_employee",
                 joinColumns = @JoinColumn(name="project_id"),
                 inverseJoinColumns = @JoinColumn(name="employee_id"))
+
 
     @JsonIgnore
     private List<Employee> employees;
