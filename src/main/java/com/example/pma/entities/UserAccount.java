@@ -1,6 +1,9 @@
 package com.example.pma.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="user_accounts")
@@ -11,11 +14,17 @@ public class UserAccount {
     @Column(name = "user_id")
     private long userId;
 
+    @NotBlank(message = "Must give a username")
+    @Size(min=1, max=50)
     @Column(name = "username")
     private String userName;
 
+    @NotBlank
+    @Email(message = "Must give a valid email address")
     private String email;
 
+    @NotBlank(message = "Must give a password")
+    @Size(min=2, max=14)
     private String password;
 
     private boolean enabled = true;

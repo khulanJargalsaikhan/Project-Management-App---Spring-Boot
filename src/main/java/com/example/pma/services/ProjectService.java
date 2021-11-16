@@ -2,6 +2,7 @@ package com.example.pma.services;
 
 import com.example.pma.dao.ProjectRepository;
 import com.example.pma.dto.ChartData;
+import com.example.pma.entities.Employee;
 import com.example.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,12 @@ public class ProjectService {
 
     public void delete(Project pro) {
         proRepo.delete(pro);
+    }
+
+    public List<Project> listAll(String keyword) {
+        if (keyword != null) {
+            return proRepo.search(keyword);
+        }
+        return proRepo.findAll();
     }
 }

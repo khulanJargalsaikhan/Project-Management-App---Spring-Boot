@@ -14,7 +14,6 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
     @Override
     List<Employee> findAll();
 
-
     @Query(nativeQuery = true, value = "SELECT e.first_name as firstName, e.last_name as lastName, COUNT(pe.employee_id) as projectCount \n" +
             "FROM employee e left join project_employee pe ON pe.employee_id = e.employee_id \n" +
             "GROUP BY e.first_name, e.last_name ORDER BY 3 DESC")
@@ -25,5 +24,6 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
 
     Employee findByEmployeeId(long theId);
 
-
+    @Query("SELECT e FROM Employee e WHERE CONCAT(e.firstName, e.lastName, e.email) LIKE %?1%")
+    List<Employee> search(String keyword);
 }

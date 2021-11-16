@@ -33,4 +33,12 @@ public class EmployeeService {
     public void delete(Employee theEmp) {
         empRepo.delete(theEmp);
     }
+
+    public List<Employee> listAll(String keyword) {
+        if (keyword != null) {
+            return empRepo.search(keyword);
+        }
+        return empRepo.findAll();
+    }
+
 }
