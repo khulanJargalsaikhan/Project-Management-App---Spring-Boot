@@ -1,7 +1,9 @@
 package com.example.pma.controllers;
 
 import com.example.pma.dao.UserAccountRepository;
+import com.example.pma.entities.Employee;
 import com.example.pma.entities.UserAccount;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class SecurityController {
@@ -20,6 +23,7 @@ public class SecurityController {
 
     @Autowired
     UserAccountRepository accountRepo;
+
 
     @GetMapping("/register")
     public String register(Model model){
@@ -36,6 +40,13 @@ public class SecurityController {
         user.setPassword(bCryptEncoder.encode(user.getPassword()));
         accountRepo.save(user);
         return "redirect:/";
+    }
+
+    @GetMapping("/userAccounts")
+    public String displayUsers(Model model){
+        List<UserAccount> userAccounts = accountRepo.findAll();
+        model.addAttribute("userAccounts", userAccounts);
+        return "security/list-users";
     }
 
 
