@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -47,6 +48,20 @@ public class SecurityController {
         List<UserAccount> userAccounts = accountRepo.findAll();
         model.addAttribute("userAccounts", userAccounts);
         return "security/list-users";
+    }
+
+//    @GetMapping("/userAccounts/update")
+//    public String updateUserAccount(@RequestParam("id") long theId, Model model){
+//        UserAccount theUser = accountRepo.findByUserId(theId);
+//        model.addAttribute("userAccount", theUser); //this displays the actual form
+//        return "security/register";
+//    }
+
+    @GetMapping ("/userAccounts/delete")
+    public String deleteUserAccount(@RequestParam("id") Long theId, Model model){
+        UserAccount theUser = accountRepo.findByUserId(theId);
+        accountRepo.delete(theUser);
+        return "redirect:/userAccounts";
     }
 
 

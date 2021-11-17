@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserAccountRepository extends PagingAndSortingRepository<UserAccount, Long> {
     @Override
     List<UserAccount> findAll();
+
+    UserAccount findByUserId(long theId);
 }

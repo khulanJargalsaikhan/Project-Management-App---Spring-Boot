@@ -30,7 +30,7 @@
                 <td th:text="${anUser.email}"></td>
                 <td th:text="${anUser.password}"></td>
                 <td>
-                    <a th:href="@{/userAccounts/update(id=${anUser.userId})}" class="btn btn-info btn-sm">Update</a>
+<!--                    <a th:href="@{/userAccounts/update(id=${anUser.userId})}" class="btn btn-info btn-sm">Update</a>-->
                     <a th:href="@{/userAccounts/delete(id=${anUser.userId})}" class="btn btn-danger btn-sm"
                        onclick="if (!(confirm('Are you sure you want to delete this user?'))) return false">Delete</a>
                 </td>
