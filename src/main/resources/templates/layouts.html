@@ -48,9 +48,9 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword" th:value="${keyword}" required>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
-
-
-
+            </div>
+            <div style="margin-left: 2rem">
+                <p style="color: lightpink">Account Name: <span sec:authentication="name"></span></p>
             </div>
             <div style="margin-left: 2rem">
                 <a sec:authorize="!isAuthenticated()" class="btn btn-info btn-sm" th:href="@{/login}" role="button">Login</a>
