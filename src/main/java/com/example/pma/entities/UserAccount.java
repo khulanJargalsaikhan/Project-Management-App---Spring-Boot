@@ -27,6 +27,7 @@ public class UserAccount {
     @Size(min=2, max=14)
     private String password;
 
+
     private boolean enabled = true;
 
     public UserAccount(){
@@ -72,4 +73,5 @@ public class UserAccount {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
 }

@@ -12,7 +12,7 @@
     <br>
     <h3>Project Form</h3>
     <br>
-    <form  th:action="@{/projects/save}" th:object="${project}" method="POST">
+    <form th:action="@{/projects/save}" th:object="${project}" method="POST">
         <input type="hidden" th:field="${project.projectId}"/>
 
         <div class="form-group row">
