@@ -7,9 +7,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -31,7 +28,7 @@ public class EmployeeApiController {
 
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Employee create(@RequestBody @Valid Employee employee){
+    public Employee create(@RequestBody Employee employee){
         return empRepo.save(employee);
     }
 
