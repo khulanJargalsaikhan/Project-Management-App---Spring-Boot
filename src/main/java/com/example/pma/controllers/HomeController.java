@@ -28,11 +28,6 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-    @Value("${version}")
-    private String version;
-
-    @Value("${spring.datasource.password}")
-    private String dbPassword;
 
     @Autowired
     EmployeeService employeeService;
@@ -45,10 +40,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String displayHome(Model model) throws JsonProcessingException {
-
-        model.addAttribute("versionNumber", version);
-
-        model.addAttribute("dbPassword", dbPassword);
 
         Map<String, Object> map = new HashMap<>();
 
