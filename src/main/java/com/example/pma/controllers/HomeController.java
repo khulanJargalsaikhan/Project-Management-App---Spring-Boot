@@ -38,10 +38,20 @@ public class HomeController {
     @Autowired
     EmployeeRepository empRepo;
 
+    @Value("${version}")
+    private String version;
+
+    @Value("${spring.datasource.password}")
+    private String dbPassword;
+
     @GetMapping("/")
     public String displayHome(Model model) throws JsonProcessingException {
 
         Map<String, Object> map = new HashMap<>();
+
+        model.addAttribute("versionNumber", version);
+
+        model.addAttribute("dbPassword", dbPassword);
 
         // we are querying the database for projects
         List<Project> projects = proRepo.findAll();

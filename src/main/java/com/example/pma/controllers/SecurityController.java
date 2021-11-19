@@ -40,8 +40,10 @@ public class SecurityController {
         if(errors.hasErrors())
             return "security/register";
 
+        user.setRole("ROLE_USER");
         user.setPassword(bCryptEncoder.encode(user.getPassword()));
         accountRepo.save(user);
+
         return "redirect:/";
     }
 

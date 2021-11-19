@@ -27,6 +27,8 @@ public class UserAccount {
     @Size(min=2, max=14)
     private String password;
 
+    @Column(name = "role")
+    private String role;
 
     private boolean enabled = true;
 
@@ -74,4 +76,11 @@ public class UserAccount {
         this.enabled = enabled;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

@@ -28,7 +28,7 @@ public class Employee {
 
     @NotBlank
     @Email(message = "*Must give a valid email address")  //controller(client side) level validation
-    //@UniqueValue  //this is custom validation that we created
+    //@UniqueValue  //this is custom validation that we created    -!this is causing 405 error on heroku
     private String email;
 
     //@Column(unique = true) //this is database level validation, and this will not work bc ddl=none in app.properties file
