@@ -47,14 +47,9 @@ public class ProjectController {
     }
 
     @PostMapping("/save")
-    public String createProject(@Valid Project project, Errors errors, BindingResult bindingResult, Model model){
+    public String createProject(@Valid Project project, Errors errors){
         if(errors.hasErrors())
             return "projects/new-project";
-//        else if(bindingResult.hasErrors()){
-//            List<String> stage = Arrays.asList("NOTSTARTED", "INPROGRESS", "COMPLETED");
-//            model.addAttribute("stage", stage);
-//            return "projects/new-project";
-//        }
 
         // this should handle saving to the database..
         proService.save(project);

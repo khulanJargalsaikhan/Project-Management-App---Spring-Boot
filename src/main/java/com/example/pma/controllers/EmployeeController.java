@@ -35,7 +35,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/save")
-    public String createEmployee(@Valid Employee employee, Errors errors){
+    public String createEmployee(@Valid Employee employee, Errors errors, Model model){
 
         if(errors.hasErrors())
             return "employees/new-employee";

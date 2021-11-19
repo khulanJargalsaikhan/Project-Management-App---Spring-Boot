@@ -29,6 +29,7 @@ public class EmployeeApiController {
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee create(@RequestBody Employee employee){
+
         return empRepo.save(employee);
     }
 
