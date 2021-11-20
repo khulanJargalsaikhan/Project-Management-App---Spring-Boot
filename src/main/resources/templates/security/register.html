@@ -17,6 +17,8 @@
 
     <div class="row col-lg-4 col-lg-offset-4 d-flex justify-content-center" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
         <form autocomplete="off" th:action="@{/register/save}" th:object="${userAccount}" method="post" class="form-signin" role="form">
+            <input type="hidden" th:field="${userAccount.userId}"/>
+
             <h3 class="form-signin-heading">Registration Form</h3>
             <div class="form-group">
                 <div class="">

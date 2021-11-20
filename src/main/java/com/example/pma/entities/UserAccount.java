@@ -14,21 +14,20 @@ public class UserAccount {
     @Column(name = "user_id")
     private long userId;
 
-    @NotBlank(message = "Must give a username")
+    @NotBlank
     @Size(min=1, max=50)
     @Column(name = "username")
     private String userName;
 
     @NotBlank
-    @Email(message = "Must give a valid email address")
+    @Email
     private String email;
 
-    @NotBlank(message = "Must give a password")
+    @NotBlank
     @Size(min=2, max=14)
     private String password;
 
-    @Column(name = "role")
-    private String role;
+    private String role = "ROLE_USER";
 
     private boolean enabled = true;
 
