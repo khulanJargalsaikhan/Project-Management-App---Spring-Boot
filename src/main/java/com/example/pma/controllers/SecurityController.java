@@ -32,7 +32,7 @@ public class SecurityController {
         return "security/register";
     }
 
-    @PostMapping("register/save")
+    @PostMapping(path="register/save")
     public String saveUser(@Valid UserAccount user, Errors errors){
         if(errors.hasErrors())
             return "security/register";
